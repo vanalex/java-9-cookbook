@@ -2,6 +2,8 @@ package functional;
 
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 
 public class DemoFunctional {
 
@@ -18,6 +20,15 @@ public class DemoFunctional {
 
         System.out.print(ourFunction.apply(2));
 
+        Function<Vehicle, Double> anotherFunction = new Function<Vehicle, Double>() {
+            public Double apply(Vehicle vehicle) {
+                double timesecs = 2.0;
+                return vehicle.getSpeedMph(timesecs);
+            }
+        };
+
+        System.out.print("\nSpeed --> " + anotherFunction.apply(Vehicle.buildVehicle(3, 4)));
+
         Consumer<String> consumer = new Consumer<String>() {
             public void accept(String s) {
                 System.out.println("\nThe " + s + " is consumed.");
@@ -25,6 +36,23 @@ public class DemoFunctional {
         };
 
         consumer.accept("Hello!");
+
+        Supplier<String> supplier = new Supplier<String>() {
+            public String get() {
+                return "Success";
+            }
+        };
+
+        System.out.println(supplier.get());
+
+        Predicate<Double> pred = new Predicate<Double>() {
+            public boolean test(Double num) {
+                System.out.println("Test if " + num + " is smaller than 20");
+                return num < 20;
+            }
+        };
+
+        System.out.println(pred.test(10.0) ? "10 is smaller": "10 is bigger");
 
     }
 }
