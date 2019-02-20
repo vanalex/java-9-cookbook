@@ -5,6 +5,8 @@ public class Main {
     public static void main(String arg[]) {
         demo1_poundsAndKg();
         demo2_kgToPounds();
+
+        Float.compare(1.0f, 2.0f);
     }
 
     public static void demo1_poundsAndKg() {
