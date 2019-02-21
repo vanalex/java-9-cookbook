@@ -1,9 +1,6 @@
 package functional;
 
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
+import java.util.function.*;
 
 public class DemoFunctional {
 
@@ -54,5 +51,27 @@ public class DemoFunctional {
 
         System.out.println(pred.test(10.0) ? "10 is smaller": "10 is bigger");
 
+        IntFunction<String> ifunction = new IntFunction<String>() {
+            public String apply(int value) {
+                return String.valueOf(value *10);
+            }
+        };
+
+        System.out.println(ifunction.apply(2));
+
+        BiFunction<String, Integer, Double> bifunc =
+                new BiFunction<String, Integer, Double >() {
+                    public Double apply(String s, Integer i) {
+                        return (s.length() * 10d)/i;
+                    }
+                };
+        System.out.println(bifunc.andThen(x->11d).apply("1",2));
+
+        BinaryOperator<Integer> binfunc = new BinaryOperator<Integer>(){
+            public Integer apply(Integer i, Integer j) {
+                return i >= j ? i : j;
+            }
+        };
+        System.out.println(binfunc.apply(1,2));
     }
 }
