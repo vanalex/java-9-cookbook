@@ -1,11 +1,14 @@
 package functional;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.*;
 
 public class DemoFunctional {
 
     public static void main(String...args){
         demo1();
+        demo2();
     }
 
     public static void demo1(){
@@ -73,5 +76,12 @@ public class DemoFunctional {
             }
         };
         System.out.println(binfunc.apply(1,2));
+
+    }
+
+    public static void demo2() {
+        Function<Integer, Double> multiplyBy10 = DemoUtil.createMultiplyBy(10d);
+        System.out.println(multiplyBy10.apply(1));
+
     }
 }
