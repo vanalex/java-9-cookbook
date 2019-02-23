@@ -12,4 +12,13 @@ public class DemoUtil {
         };
         return ourFunc;
     }
+
+    public static Function<Double, Double> createSubtract(double num){
+        Function<Double, Double> ourFunc = new Function<Double, Double>(){
+            public Double apply(Double dbl){
+                return dbl - num;
+            }
+        };
+        return ourFunc;
+    }
 }

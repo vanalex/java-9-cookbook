@@ -83,5 +83,11 @@ public class DemoFunctional {
         Function<Integer, Double> multiplyBy10 = DemoUtil.createMultiplyBy(10d);
         System.out.println(multiplyBy10.apply(1));
 
+        Function<Integer, Double> multiplyBy30 = DemoUtil.createMultiplyBy(30d);
+        System.out.println(multiplyBy30.apply(1));
+
+        Function<Double, Double> subtract7 = DemoUtil.createSubtract(7.0);
+        System.out.println(subtract7.apply(10.0));
+        System.out.println(subtract7.apply(7.0));
     }
 }
