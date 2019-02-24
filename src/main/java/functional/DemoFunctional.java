@@ -89,5 +89,8 @@ public class DemoFunctional {
         Function<Double, Double> subtract7 = DemoUtil.createSubtract(7.0);
         System.out.println(subtract7.apply(10.0));
         System.out.println(subtract7.apply(7.0));
+
+        Consumer<String> sayHappyToSee = DemoUtil.createTalker("Happy to see you again!");
+        sayHappyToSee.accept("Hello!");
     }
 }

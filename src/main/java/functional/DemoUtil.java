@@ -1,5 +1,6 @@
 package functional;
 
+import java.util.function.Consumer;
 import java.util.function.Function;
 
 public class DemoUtil {
@@ -20,5 +21,14 @@ public class DemoUtil {
             }
         };
         return ourFunc;
+    }
+
+    public static Consumer<String> createTalker(String value){
+        Consumer<String> consumer = new Consumer<String>() {
+            public void accept(String s) {
+                System.out.println(s + value);
+            }
+        };
+        return consumer;
     }
 }
