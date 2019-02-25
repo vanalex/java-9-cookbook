@@ -92,5 +92,14 @@ public class DemoFunctional {
 
         Consumer<String> sayHappyToSee = DemoUtil.createTalker("Happy to see you again!");
         sayHappyToSee.accept("Hello!");
+
+        Supplier<String> successOrFailure = DemoUtil.createResultSupplier();
+        System.out.println(successOrFailure.get());
+
+        Predicate<Double> isSmallerThan20 = DemoUtil.createIsSmallerThan(20d);
+        System.out.println(isSmallerThan20.test(10d));
+
+        Predicate<Double> isBiggerThan18 = DemoUtil.createIsBiggerThan(18d);
+        System.out.println(isBiggerThan18.test(10d));
     }
 }

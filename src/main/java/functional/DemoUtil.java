@@ -2,6 +2,8 @@ package functional;
 
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 
 public class DemoUtil {
 
@@ -30,5 +32,36 @@ public class DemoUtil {
             }
         };
         return consumer;
+    }
+
+    public static Supplier<String> createResultSupplier(){
+        Supplier<String> supplier = new Supplier<String>() {
+            public String get() {
+                String res = "Success";
+                //Do something and return result – Success or Error.
+                return res;
+            }
+        };
+        return supplier;
+    }
+
+    public static Predicate<Double> createIsSmallerThan(double limit){
+        Predicate<Double> pred = new Predicate<Double>() {
+            public boolean test(Double num) {
+                System.out.println("Test if " + num + " is smaller than " + limit);
+                return num < limit;
+            }
+        };
+        return pred;
+    }
+
+    public static Predicate<Double> createIsBiggerThan(double limit){
+        Predicate<Double> pred = new Predicate<Double>() {
+            public boolean test(Double num) {
+                System.out.println("Test if " + num + " is bigger than " + limit);
+                return num > limit;
+            }
+        };
+        return pred;
     }
 }
