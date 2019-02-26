@@ -113,5 +113,29 @@ public class DemoFunctional {
         Supplier<String> compare1By30And20 = applyCompareAndSay(1, multiplyBy30, isSmallerThan20, "bigger");
         System.out.println(compare1By30And20.get());
 
+        Supplier<String> compare1By30Less7To20 = applyCompareAndSay(1, multiplyBy30.andThen(subtract7), isSmallerThan20);
+        System.out.println(compare1By30Less7To20.get());
+
+        Supplier<String> compare1By30Less7TwiceTo20 = applyCompareAndSay(1, multiplyBy30.andThen(subtract7).andThen(subtract7), isSmallerThan20);
+        System.out.println(compare1By30Less7TwiceTo20.get());
+
+        Supplier<String> compare1By30Less7To20_ = applyCompareAndSay(1, subtract7.compose(multiplyBy30), isSmallerThan20);
+        System.out.println(compare1By30Less7To20_.get());
+
+        Supplier<String> compare1By30Less7TwiceTo20_ = applyCompareAndSay(1, subtract7.compose(multiplyBy30).andThen(subtract7), isSmallerThan20);
+        System.out.println(compare1By30Less7TwiceTo20_.get());
+
+        Consumer<String> askHowAreYou = createTalker("How are you?");
+        sayHappyToSee.andThen(askHowAreYou).accept("Hello!");
+
+        Supplier<String> compare1By30Less7TwiceTo18And20 = applyCompareAndSay(1, multiplyBy30.andThen(subtract7).andThen(subtract7),
+                isSmallerThan20.and(isBiggerThan18), "between 18 and 20");
+        System.out.println(compare1By30Less7TwiceTo18And20.get());
+
+        //Other default methods of Functional Interfaces include:
+
+        Function<Integer, Integer> id = Function.identity();
+        System.out.println("Function.identity.apply(4) => " + id.apply(4));
+
     }
 }
