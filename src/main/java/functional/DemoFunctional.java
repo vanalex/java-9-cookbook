@@ -109,5 +109,9 @@ public class DemoFunctional {
         //We can pass the created functions as parameters:
         Supplier<String> compare1By10And20 = applyCompareAndSay(1, multiplyBy10, isSmallerThan20);
         System.out.println(compare1By10And20.get());
+
+        Supplier<String> compare1By30And20 = applyCompareAndSay(1, multiplyBy30, isSmallerThan20, "bigger");
+        System.out.println(compare1By30And20.get());
+
     }
 }

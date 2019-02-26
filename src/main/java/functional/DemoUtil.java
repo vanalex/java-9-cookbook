@@ -73,4 +73,14 @@ public class DemoUtil {
         };
         return supplier;
     }
+
+    public static Supplier<String> applyCompareAndSay(int i, Function<Integer, Double> func, Predicate<Double> compare, String message){
+        Supplier<String> supplier = new Supplier<String>() {
+            public String get() {
+                double v = func.apply(i);
+                return (compare.test(v)? v + " is " : v + " is not ") + message;
+            }
+        };
+        return supplier;
+    }
 }
