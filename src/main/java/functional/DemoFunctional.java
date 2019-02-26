@@ -13,6 +13,7 @@ public class DemoFunctional {
     public static void main(String...args){
         demo1();
         demo2();
+        demo3();
     }
 
     public static void demo1(){
@@ -137,5 +138,30 @@ public class DemoFunctional {
         Function<Integer, Integer> id = Function.identity();
         System.out.println("Function.identity.apply(4) => " + id.apply(4));
 
+    }
+
+    public static void demo3() {
+
+        //Introducing Lambdas:
+        Function<Integer, Double> ourFunc = i -> i * 10.0;
+        System.out.println(ourFunc.apply(1));
+
+        Consumer<String> consumer = s -> System.out.println("The " + s + " is consumed.");
+        consumer.accept("Hello!");
+
+        Supplier<String> supplier = () -> {
+            String res = "Success";
+            //Do something and return result – Success or Error.
+            return res;
+        };
+
+        System.out.println(supplier.get());
+
+        Predicate<Double> pred = num -> {
+            System.out.println("Test if " + num + " is smaller than 20");
+            return num < 20;
+        };
+
+        System.out.println(pred.test(10.0) ? "10 is smaller": "10 is bigger");
     }
 }
