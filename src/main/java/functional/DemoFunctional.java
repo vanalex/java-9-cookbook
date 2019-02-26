@@ -1,8 +1,12 @@
 package functional;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.function.*;
+import static functional.DemoUtil.createMultiplyBy;
+import static functional.DemoUtil.applyCompareAndSay;
+import static functional.DemoUtil.createIsBiggerThan;
+import static functional.DemoUtil.createIsSmallerThan;
+import static functional.DemoUtil.createResultSupplier;
+import static functional.DemoUtil.createTalker;
 
 public class DemoFunctional {
 
@@ -80,26 +84,30 @@ public class DemoFunctional {
     }
 
     public static void demo2() {
-        Function<Integer, Double> multiplyBy10 = DemoUtil.createMultiplyBy(10d);
+        Function<Integer, Double> multiplyBy10 = createMultiplyBy(10d);
         System.out.println(multiplyBy10.apply(1));
 
-        Function<Integer, Double> multiplyBy30 = DemoUtil.createMultiplyBy(30d);
+        Function<Integer, Double> multiplyBy30 = createMultiplyBy(30d);
         System.out.println(multiplyBy30.apply(1));
 
         Function<Double, Double> subtract7 = DemoUtil.createSubtract(7.0);
         System.out.println(subtract7.apply(10.0));
         System.out.println(subtract7.apply(7.0));
 
-        Consumer<String> sayHappyToSee = DemoUtil.createTalker("Happy to see you again!");
+        Consumer<String> sayHappyToSee = createTalker("Happy to see you again!");
         sayHappyToSee.accept("Hello!");
 
-        Supplier<String> successOrFailure = DemoUtil.createResultSupplier();
+        Supplier<String> successOrFailure = createResultSupplier();
         System.out.println(successOrFailure.get());
 
-        Predicate<Double> isSmallerThan20 = DemoUtil.createIsSmallerThan(20d);
+        Predicate<Double> isSmallerThan20 = createIsSmallerThan(20d);
         System.out.println(isSmallerThan20.test(10d));
 
-        Predicate<Double> isBiggerThan18 = DemoUtil.createIsBiggerThan(18d);
+        Predicate<Double> isBiggerThan18 = createIsBiggerThan(18d);
         System.out.println(isBiggerThan18.test(10d));
+
+        //We can pass the created functions as parameters:
+        Supplier<String> compare1By10And20 = applyCompareAndSay(1, multiplyBy10, isSmallerThan20);
+        System.out.println(compare1By10And20.get());
     }
 }

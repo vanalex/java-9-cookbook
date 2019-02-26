@@ -64,4 +64,13 @@ public class DemoUtil {
         };
         return pred;
     }
+    public static Supplier<String> applyCompareAndSay(int i, Function<Integer, Double> func, Predicate<Double> isSmaller){
+        Supplier<String> supplier = new Supplier<String>() {
+            public String get() {
+                double v = func.apply(i);
+                return isSmaller.test(v)? v + " is smaller" : v + " is bigger";
+            }
+        };
+        return supplier;
+    }
 }
