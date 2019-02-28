@@ -163,5 +163,8 @@ public class DemoFunctional {
         };
 
         System.out.println(pred.test(10.0) ? "10 is smaller": "10 is bigger");
+
+        Function<Integer, Double> multiplyBy10 = i -> i * 10.0;
+        System.out.println("1 * 10.0 => " + multiplyBy10.apply(1));
     }
 }
