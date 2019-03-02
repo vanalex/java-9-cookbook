@@ -178,5 +178,11 @@ public class DemoFunctional {
 
         Predicate<Double> isSmallerThan20 = x -> x < 20d;
         System.out.println("10.0 is smaller than 20.0 => " + isSmallerThan20.test(10d));
+
+        Predicate<Double> isBiggerThan18 = x -> x > 18d;
+        System.out.println("10.0 is smaller than 18.0 => " + isBiggerThan18.test(10d));
+
+        BiFunction<Integer, String, Double> demo = (x,y) -> x * 10d + Double.parseDouble(y);
+        System.out.println(demo.apply(1, "100"));
     }
 }
