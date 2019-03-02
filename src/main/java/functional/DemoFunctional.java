@@ -166,5 +166,17 @@ public class DemoFunctional {
 
         Function<Integer, Double> multiplyBy10 = i -> i * 10.0;
         System.out.println("1 * 10.0 => " + multiplyBy10.apply(1));
+
+        Function<Integer, Double> multiplyBy30 = i -> i * 30.0;
+        System.out.println("1 * 30.0 => " + multiplyBy30.apply(1));
+
+        Function<Double,Double> subtract7 = x -> x - 7.0;
+        System.out.println("10.0 - 7.0 => " + subtract7.apply(10.0));
+
+        Consumer<String> sayHappyToSee = s -> System.out.println(s + " Happy to see you again!");
+        sayHappyToSee.accept("Hello!");
+
+        Predicate<Double> isSmallerThan20 = x -> x < 20d;
+        System.out.println("10.0 is smaller than 20.0 => " + isSmallerThan20.test(10d));
     }
 }

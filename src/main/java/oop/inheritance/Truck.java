@@ -9,4 +9,10 @@ public class Truck extends Vehicle {
     }
     public int getPayload() { return this.payload; }
 
+    @Override
+    public String toString() {
+        return "Truck{" +
+                "payload=" + payload +
+                "} " + super.toString();
+    }
 }

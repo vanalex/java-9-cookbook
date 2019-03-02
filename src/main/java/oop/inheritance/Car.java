@@ -10,4 +10,11 @@ public class Car extends Vehicle {
     public int getPassengersCount() {
         return this.passengersCount;
     }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "passengersCount=" + passengersCount +
+                "} " + super.toString();
+    }
 }

@@ -13,4 +13,12 @@ public class Vehicle {
         v = v*timeSec*32.174/weightPounds;
         return Math.round(Math.sqrt(v)*0.68);
     }
+
+    @Override
+    public String toString() {
+        return "Vehicle{" +
+                "weightPounds=" + weightPounds +
+                ", horsePower=" + horsePower +
+                '}';
+    }
 }
